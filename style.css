@@ -13,16 +13,26 @@ html, body {
 
 .outer {
   position: relative;
-  width: 300px;
+  /* the blue square is supposed to be "5 units by 5 units" */
+  /* but "units" alone doesn't describe anything specific, so for this case */
+  /* I'm going to assume that one "unit" is 60px. 5 * 60px = 300px. */
+  width: 300px; /* for older browsers */
+  -webkit-width: calc(5*60px);
+  -moz-width: calc(5*60px);
+  -ms-width: calc(5*60px);
+  -o-width: calc(5*60px);
+  width: calc(5*60px);
 }
 
 .inner {
   position: absolute;
-  width: 50%;
+  width: 50%; /* the yellow square's dimensions look like half the length of the blue's */
   height: 50%;
-  margin: 25%;
+  margin: 25%; /* margin * 2 + width = 100% to center the yellow square */
 }
 
+/* the .square class is for preserving a 1:1 aspect ratio */
+/* without having to hardcode both the width and height of each square */
 .square {
   display: inline-block;
 }
